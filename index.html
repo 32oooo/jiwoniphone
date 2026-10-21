@@ -484,6 +484,7 @@ if(tab==2)return `<div class="cptit"><h2>게시판</h2><span class="xe" data-c="
 return top()+`<div class="cpb2"><b>${esc(c.nick)}</b><small>${esc(c.sch)}</small></div><div class="xe" style="padding:12px 16px;display:flex;flex-direction:column;gap:10px;align-items:flex-start"><button class="bt" data-c="me">학교 이름 / 닉네임 수정</button><button class="bt" data-c="tlk">하단 탭(시간표·게시판·내 정보) 잠금: ${c.tl?'켜짐 🔒':'꺼짐'}</button></div><p class="cpe">내가 쓴 글 ${cpAll().filter(x=>x[0].a==c.nick).length}개</p>`};
 return{bare:1,html:()=>`<div class="cp"><div class="cpm">${body()}</div>${tabs()}</div>`,
 c:async c=>{const d=C();
+if(RO&&(c=='es'||c=='me'||c=='eb'||c=='nb'))return;
 if(/^t\d$/.test(c)){if(RO&&d.tl&&c!='t0')return;tab=+c[1];be=0;he=0;render()}
     else if(c=='tlk'){d.tl=d.tl?0:1;save();render();toast(d.tl?'🔒 하단 탭 잠금 (보는 사람)':'🔓 잠금 해제')}
     else if(c=='hE'){he=!he;render()}
